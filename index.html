@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vedantu Demo Certificate</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
@@ -11,7 +12,6 @@
             display: flex; flex-direction: column; align-items: center; padding: 20px; 
         }
 
-        /* Editor Panel */
         .editor-panel { 
             background: white; padding: 25px; border-radius: 15px; 
             box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin-bottom: 30px; 
@@ -21,14 +21,15 @@
             padding: 12px; width: 90%; margin: 8px 0; border: 2px solid #eee; 
             border-radius: 8px; font-size: 16px; outline: none;
         }
+        .btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
         button { 
-            padding: 15px 30px; background: #ff4500; color: white; border: none; 
-            border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 18px;
-            margin-top: 10px; transition: 0.3s;
+            padding: 12px 20px; border: none; border-radius: 8px; 
+            cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s;
         }
-        button:hover { background: #e63e00; }
+        .gen-btn { background: #ff4500; color: white; }
+        .dl-btn { background: #3b82f6; color: white; display: none; }
+        button:hover { opacity: 0.9; transform: translateY(-2px); }
 
-        /* FIXED CERTIFICATE DESIGN */
         #certificate { 
             display: none; width: 950px; min-height: 650px; background: white; 
             border: 2px solid #ddd; position: relative; padding: 40px;
@@ -39,6 +40,7 @@
         .border-top { position: absolute; top: 0; left: 0; width: 100%; height: 20px; background: #ff4500; }
         .border-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 20px; background: #3b82f6; }
 
+        /* FIXED LOGO LINK */
         .logo-img { width: 220px; margin-top: 20px; }
         
         .main-header { color: #2c3e50; font-size: 50px; font-weight: 800; margin: 20px 0 5px 0; }
@@ -51,27 +53,20 @@
         
         .context-text { font-size: 22px; color: #444; margin: 10px 0; }
 
-        /* PROGRAM BADGE - Spacing Fixed */
         .program-badge {
             background: #3b82f6; color: white; display: inline-block;
             padding: 12px 50px; border-radius: 6px; font-size: 32px;
             font-weight: 800; margin: 20px 0; text-transform: uppercase;
-            box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3);
         }
 
         .quote { font-size: 18px; color: #777; font-style: italic; margin: 20px 0 40px 0; }
 
-        /* FOOTER FIX - Uses Flexbox to prevent Overwriting */
         .footer-container { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: flex-end; 
-            margin-top: 30px;
-            padding: 0 40px;
+            display: flex; justify-content: space-between; 
+            align-items: flex-end; margin-top: 30px; padding: 0 40px;
         }
 
         .footer-item { text-align: center; flex: 1; }
-        
         .signature-name { font-family: 'Brush Script MT', cursive; font-size: 42px; color: #2c3e50; margin-bottom: -10px; }
         .line { border-top: 2px solid #333; padding-top: 8px; font-size: 14px; font-weight: bold; color: #555; width: 220px; margin: 0 auto; }
         .date-val { font-size: 20px; font-weight: bold; color: #333; margin-bottom: 5px; }
@@ -81,8 +76,6 @@
             opacity: 0.03; pointer-events: none;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z' fill='%23000'/%3E%3C/svg%3E");
         }
-
-        @media print { .editor-panel { display: none; } body { padding: 0; } #certificate { display: block; border: none; box-shadow: none; } }
     </style>
 </head>
 <body>
@@ -90,7 +83,7 @@
 <div class="editor-panel">
     <h2 style="color:#ff4500">Demo Certificate Editor</h2>
     <input type="text" id="stuName" placeholder="Student Name">
-    <input type="text" id="stuGrade" placeholder="Grade (e.g. Grade 2)">
+    <input type="text" id="stuGrade" placeholder="Grade">
     <select id="stuCourse">
         <option value="" disabled selected>Select Program</option>
         <option value="ENGLISH SUPERSTAR">English Superstar</option>
@@ -98,7 +91,10 @@
         <option value="SUPER SPEAKER">Super Speaker</option>
         <option value="SUPER CODER">Super Coder</option>
     </select>
-    <button onclick="generate()">Generate Certificate</button>
+    <div class="btn-group">
+        <button class="gen-btn" onclick="generate()">Generate 🚀</button>
+        <button id="downloadBtn" class="dl-btn" onclick="downloadCert()">Download Image 📸</button>
+    </div>
 </div>
 
 <div id="certificate">
@@ -106,7 +102,7 @@
     <div class="border-top"></div>
     <div class="border-bottom"></div>
 
-    <img src="https://raw.githubusercontent.com/jaffarsiddig-oss/certificate-tool/main/image_3035f6.png" class="logo-img" alt="Vedantu Logo">
+    <img src="https://raw.githubusercontent.com/jaffarsiddig-oss/certificate-tool/main/image_3035f6.png" class="logo-img" alt="Vedantu Early Learning">
     
     <div class="sub-header">Certificate of Achievement</div>
     <div class="main-header">CONGRATULATIONS</div>
@@ -154,10 +150,21 @@
             document.getElementById('displayDate').innerText = today;
 
             document.getElementById('certificate').style.display = 'block';
+            document.getElementById('downloadBtn').style.display = 'block';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         } else {
             alert("Please fill in all fields!");
         }
+    }
+
+    function downloadCert() {
+        const cert = document.getElementById('certificate');
+        html2canvas(cert, { useCORS: true }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'Vedantu_Certificate.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
     }
 </script>
 
