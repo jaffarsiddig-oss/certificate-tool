@@ -3,86 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vedantu Official Certificate</title>
+    <title>Vedantu Superstar Certificate</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        /* Professional Typography */
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;700&family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Great+Vibes&display=swap');
 
         body { 
-            background: #f4f7f6; font-family: 'Montserrat', sans-serif; 
-            display: flex; flex-direction: column; align-items: center; padding: 40px; 
+            font-family: 'Montserrat', sans-serif; 
+            background: #fdf2f0; display: flex; flex-direction: column; align-items: center; padding: 30px; 
         }
 
-        /* Input Controls */
-        .control-panel { 
-            background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 35px; width: 100%; max-width: 550px; text-align: center; border-top: 6px solid #ff4500;
+        /* Input Form */
+        .editor-panel { 
+            background: white; padding: 20px; border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 25px; 
+            border-top: 5px solid #ff4500; width: 100%; max-width: 500px; text-align: center;
         }
-        input, select { padding: 12px; width: 92%; margin: 10px 0; border: 1.5px solid #eee; border-radius: 8px; font-size: 16px; }
-        .btn-gen { background: #ff4500; color: #fff; padding: 15px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; width: 95%; margin-top: 10px; font-size: 18px; }
-        .btn-dl { background: #3b82f6; color: #fff; padding: 12px 25px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; display: none; margin-top: 15px; }
+        input, select { padding: 12px; width: 85%; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
+        .gen-btn { background: #ff4500; color: white; padding: 14px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 90%; }
+        .dl-btn { background: #3b82f6; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; display: none; margin-top: 15px; }
 
-        /* THE CERTIFICATE CANVAS */
+        /* THE CERTIFICATE */
         #certificate { 
-            display: none; width: 1100px; height: 770px; background: #fff; position: relative;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.2); overflow: hidden; box-sizing: border-box;
+            display: none; width: 1000px; height: 720px; background: white; 
+            position: relative; overflow: hidden; border: 15px solid #ff4500;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); box-sizing: border-box;
         }
 
-        /* HD Background with Security Pattern */
-        .bg-layer {
-            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
-            background-image: radial-gradient(circle at 50% 50%, #fff 0%, #f9f9f9 100%),
-                              url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm66-3c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-40-39c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm13-31c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ff4500' fill-opacity='0.03'/%3E%3C/svg%3E");
-            z-index: 1;
+        /* PREMIUM SUNBURST BACKGROUND */
+        .sunburst {
+            position: absolute; width: 200%; height: 200%; top: -50%; left: -50%;
+            background: radial-gradient(circle, #ffffff 10%, #fff5f0 100%);
+            z-index: 0;
         }
 
-        /* Gold Formal Border */
-        .main-border {
-            position: absolute; top: 25px; left: 25px; right: 25px; bottom: 25px;
-            border: 4px double #d4af37; z-index: 2;
+        /* ACHIEVEMENT SYMBOLS (HD Laurel & Seal) */
+        .laurel { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 200px; opacity: 0.1; z-index: 1; }
+        .gold-seal { position: absolute; bottom: 80px; right: 60px; width: 120px; z-index: 5; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); }
+
+        .content { position: relative; z-index: 10; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 50px 0; box-sizing: border-box; }
+
+        /* LOGO PLACEMENT */
+        .logo-img { width: 300px; margin: 0 auto; }
+        
+        .sub-header { color: #ff4500; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 5px; margin-top: 10px; }
+        .main-header { color: #2c3e50; font-size: 60px; font-weight: 900; margin: 5px 0; text-transform: uppercase; }
+        
+        .presented-to { font-size: 22px; color: #555; margin-top: 20px; font-style: italic; font-family: 'serif'; }
+        
+        .student-name { 
+            font-size: 75px; color: #3b82f6; font-weight: 900; 
+            margin: 10px 0; display: inline-block; padding: 0 40px;
+            border-bottom: 3px solid #3b82f6;
+        }
+        
+        .course-text { font-size: 24px; color: #444; margin: 15px 0; line-height: 1.4; }
+        
+        /* PROGRAM BOX - Fixed position to prevent overlap */
+        .program-box {
+            background: #ff4500; color: white; display: inline-block;
+            padding: 12px 50px; border-radius: 8px; font-size: 32px;
+            font-weight: 900; margin-top: 5px; text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(255, 69, 0, 0.2);
         }
 
-        .cert-wrap { 
-            position: relative; z-index: 10; height: 100%; 
-            display: flex; flex-direction: column; align-items: center; 
-            padding: 60px 80px; box-sizing: border-box; justify-content: space-between;
-        }
-
-        .logo-img { width: 340px; margin-bottom: 5px; }
-
-        .title-main { font-family: 'Cinzel', serif; font-size: 64px; color: #1a1a1a; margin: 0; letter-spacing: 6px; }
-        .sub-header { font-size: 18px; text-transform: uppercase; letter-spacing: 5px; color: #666; font-weight: 700; }
-
-        .name-block { margin: 30px 0; border-bottom: 2px solid #ff4500; min-width: 500px; text-align: center; }
-        .student-name { font-family: 'Great Vibes', cursive; font-size: 82px; color: #ff4500; margin: 0; line-height: 1; }
-
-        .description { font-size: 24px; line-height: 1.6; color: #333; max-width: 800px; text-align: center; }
-        .program-tag { font-weight: 900; font-size: 36px; color: #3b82f6; text-transform: uppercase; display: block; margin-top: 15px; }
-
-        /* Real Gold Seal Achievement Symbol */
-        .academic-seal {
-            position: absolute; bottom: 85px; left: 50%; transform: translateX(-50%);
-            width: 130px; height: 130px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
-        }
-
-        /* Structured Footer - Zero Overlap */
-        .footer-system {
-            width: 100%; display: grid; grid-template-columns: 1fr 1fr;
-            margin-top: 40px; align-items: flex-end;
+        /* FOOTER - Grid layout for zero overwrite */
+        .footer { 
+            display: grid; grid-template-columns: 1fr 1fr;
+            width: 100%; padding: 0 80px; box-sizing: border-box;
+            align-items: flex-end; margin-top: 30px;
         }
         .footer-col { text-align: center; }
-        .signature-font { font-family: 'Great Vibes', cursive; font-size: 48px; color: #2c3e50; margin-bottom: -10px; }
-        .date-bold { font-size: 24px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
-        .label-line { border-top: 2px solid #333; padding-top: 10px; width: 260px; margin: 0 auto; font-size: 14px; font-weight: 700; color: #777; text-transform: uppercase; }
+        .sig-name { font-family: 'Great Vibes', cursive; font-size: 45px; color: #2c3e50; margin-bottom: -5px; }
+        .line { border-top: 2px solid #333; padding-top: 8px; font-size: 14px; font-weight: bold; width: 240px; margin: 0 auto; color: #555; text-transform: uppercase; }
+        .date-val { font-size: 22px; font-weight: bold; color: #1a1a1a; margin-bottom: 5px; }
 
     </style>
 </head>
 <body>
 
-<div class="control-panel">
-    <h2 style="color:#ff4500; margin-top:0;">Achievement Certificate Portal</h2>
-    <input type="text" id="stuName" placeholder="Full Name (Student)">
+<div class="editor-panel">
+    <h2 style="color:#ff4500; margin-top:0;">Vedantu Achievement Tool</h2>
+    <input type="text" id="stuName" placeholder="Full Name of Student">
     <select id="stuGrade">
         <option value="" disabled selected>Select Grade</option>
         <option value="LKG">LKG</option>
@@ -105,42 +107,43 @@
         <option value="Super Speaker">Super Speaker</option>
         <option value="Super Coder">Super Coder</option>
     </select>
-    <button class="btn-gen" onclick="generate()">Generate Achievement Award</button>
-    <button id="downloadBtn" class="btn-dl" onclick="downloadCert()">Save High-Res Certificate 📥</button>
+    <br><br>
+    <button class="gen-btn" onclick="generate()">Generate Achievement Award ✨</button>
+    <button id="downloadBtn" class="dl-btn" onclick="downloadCert()">Download HD Certificate 📥</button>
 </div>
 
 <div id="certificate">
-    <div class="bg-layer"></div>
-    <div class="main-border"></div>
-    
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Gold_seal.png" class="academic-seal" alt="Gold Seal">
+    <div class="sunburst"></div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Gold_seal.png" class="gold-seal">
 
-    <div class="cert-wrap">
-        <img src="https://jaffarsiddig-oss.github.io/certificate-tool/image_2fccda.png" class="logo-img" alt="Vedantu Logo">
+    <div class="content">
+        <img src="https://jaffarsiddig-oss.github.io/certificate-tool/image_2fccda.png" class="logo-img" alt="Vedantu Early Learning">
         
-        <div style="text-align: center;">
+        <div>
             <div class="sub-header">Certificate of Achievement</div>
-            <div class="title-main">CONGRATULATIONS</div>
-            
-            <div style="margin-top: 25px; font-size: 20px; color: #555;">This honor is proudly presented to</div>
-            <div class="name-block">
-                <p class="student-name" id="displayName">STUDENT NAME</p>
-            </div>
-            
-            <div class="description">
-                of <span style="font-weight: 700; color:#ff4500;" id="displayGrade">GRADE</span> for demonstrating excellence and successfully completing the official demo of
-                <span class="program-tag" id="displayCourse">PROGRAM NAME</span>
+            <div class="main-header">CONGRATULATIONS</div>
+
+            <div class="presented-to">This recognition is proudly awarded to</div>
+            <div class="student-name" id="displayName">NAME HERE</div>
+
+            <div class="course-text">
+                of <span style="font-weight:900; color:#3b82f6;" id="displayGrade">GRADE</span> for successfully completing the official demo of
+                <br>
+                <div class="program-box" id="displayCourse">PROGRAM NAME</div>
             </div>
         </div>
 
-        <div class="footer-system">
+        <div class="footer">
             <div class="footer-col">
-                <div class="date-bold" id="displayDate">17 March 2026</div>
-                <div class="label-line">Date of Completion</div>
+                <div class="date-val" id="displayDate">17 March 2026</div>
+                <div class="line">Completion Date</div>
             </div>
             <div class="footer-col">
-                <div class="signature-font">Vamsi Krishna</div>
-                <div class="label-line">Vamsi Krishna, CEO & Co-Founder</div>
+                <div class="sig-name">Vamsi Krishna</div>
+                <div class="line">
+                    Vamsi Krishna<br>
+                    CEO & Co-Founder, Vedantu
+                </div>
             </div>
         </div>
     </div>
@@ -166,7 +169,7 @@
             document.getElementById('downloadBtn').style.display = 'inline-block';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         } else {
-            alert("Please fill in all details correctly.");
+            alert("Please provide the superstar's details!");
         }
     }
 
@@ -174,7 +177,7 @@
         const cert = document.getElementById('certificate');
         html2canvas(cert, { useCORS: true, scale: 3 }).then(canvas => {
             const link = document.createElement('a');
-            link.download = 'Vedantu_Official_Certificate.png';
+            link.download = 'Vedantu_Superstar_Achievement.png';
             link.href = canvas.toDataURL('image/png');
             link.click();
         });
