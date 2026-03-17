@@ -14,10 +14,11 @@
         }
 
         .admin-panel { 
-            background: white; padding: 20px; border-radius: 15px; 
+            background: white; padding: 25px; border-radius: 15px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 20px; 
             border-top: 6px solid #ff4500; width: 100%; max-width: 500px; text-align: center;
         }
+        .upload-section { background: #fff5f0; padding: 10px; border-radius: 8px; margin-bottom: 10px; border: 1px dashed #ff4500; }
         input, select { padding: 12px; width: 92%; margin: 8px 0; border: 1.5px solid #ddd; border-radius: 8px; font-size: 15px; outline: none; }
         .btn-gen { background: #ff4500; color: #fff; padding: 15px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; width: 95%; margin-top: 10px; font-size: 16px; }
         .btn-dl { background: #28a745; color: #fff; padding: 12px 25px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; display: none; margin-top: 15px; }
@@ -34,14 +35,12 @@
             opacity: 0.4; z-index: 1;
         }
 
-        /* Fixed Kid Graphics - Adjusted Positions to avoid Date Overlap */
         .kid-icon { position: absolute; z-index: 5; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
         .trophy { top: 30px; left: 30px; width: 80px; transform: rotate(-10deg); }
         .rocket { bottom: 40px; right: 40px; width: 90px; transform: rotate(-15deg); }
         .globe { top: 35px; right: 45px; width: 75px; }
         .books { top: 200px; left: 25px; width: 70px; transform: rotate(10deg); }
-        .stars { top: 220px; right: 30px; width: 60px; opacity: 0.8; }
-        .cap { bottom: 180px; right: 30px; width: 75px; transform: rotate(15deg); } /* Moved up to clear Date area */
+        .cap { top: 180px; right: 30px; width: 75px; transform: rotate(15deg); } /* Stay away from footer */
 
         .cert-content { 
             position: relative; z-index: 10; height: 100%; width: 100%;
@@ -49,7 +48,10 @@
             padding: 25px 50px; box-sizing: border-box; text-align: center; justify-content: space-between;
         }
 
-        .logo-img { height: 85px; margin-top: 5px; }
+        /* Logo slot */
+        .logo-container { height: 90px; display: flex; align-items: center; justify-content: center; }
+        #certLogo { max-height: 100%; max-width: 350px; }
+
         .title-main { font-family: 'Cinzel', serif; font-size: 55px; color: #2c3e50; margin: 0; line-height: 1.1; }
 
         .name-container { 
@@ -62,7 +64,7 @@
         .course-highlight { font-weight: 900; font-size: 34px; color: #007bff; text-transform: uppercase; display: block; margin-top: 5px; }
 
         .footer { width: 100%; display: flex; justify-content: space-around; align-items: flex-end; padding-bottom: 40px; }
-        .footer-col { text-align: center; min-width: 250px; background: rgba(255,255,255,0.6); border-radius: 10px; }
+        .footer-col { text-align: center; min-width: 250px; }
         .date-val { font-size: 20px; font-weight: 700; color: #2c3e50; margin-bottom: 5px; }
         .sig-val { font-family: 'Great Vibes', cursive; font-size: 45px; color: #2c3e50; margin-bottom: -10px; }
         .line { border-top: 2px solid #d4af37; padding-top: 8px; font-size: 12px; font-weight: 700; color: #555; text-transform: uppercase; }
@@ -71,7 +73,13 @@
 <body>
 
 <div class="admin-panel">
-    <h2 style="color:#ff4500; margin-top:0;">Demo Certificate Generator</h2>
+    <h2 style="color:#ff4500; margin-top:0; font-size: 22px;">Demo Certificate Generator</h2>
+    
+    <div class="upload-section">
+        <label style="font-size: 13px; font-weight: bold; color: #ff4500;">Step 1: Upload Vedantu Logo</label><br>
+        <input type="file" id="logoUpload" accept="image/*" style="border:none; font-size: 12px;">
+    </div>
+
     <input type="text" id="stuName" placeholder="Enter Student Name">
     
     <select id="stuGrade">
@@ -90,12 +98,10 @@
         <option value="SUPER MATH">Super Math</option>
         <option value="SUPER CODER">Super Coder</option>
         <option value="SUPER SPEAKER">Super Speaker</option>
-        <option value="PHONICS CHAMP">Phonics Champ</option>
-        <option value="CREATIVE WRITING">Creative Writing</option>
     </select>
 
     <button class="btn-gen" onclick="generate()">Create Certificate ✨</button>
-    <button id="downloadBtn" class="btn-dl" onclick="download()">Download 📥</button>
+    <button id="downloadBtn" class="btn-dl" onclick="download()">Download PNG 📥</button>
 </div>
 
 <div id="certificate">
@@ -107,10 +113,12 @@
     <img src="https://cdn-icons-png.flaticon.com/512/2490/2490354.png" class="kid-icon cap">
 
     <div class="cert-content">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Vedantu_Logo.png/640px-Vedantu_Logo.png" class="logo-img">
+        <div class="logo-container">
+            <img id="certLogo" src="" alt="" style="display:none;">
+        </div>
         
         <div class="header-box">
-            <div style="color: #ff4500; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; font-size: 12px;">Official Certificate of Achievement</div>
+            <div style="color: #ff4500; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; font-size: 11px;">Official Certificate of Achievement</div>
             <h1 class="title-main">CONGRATULATIONS</h1>
         </div>
 
@@ -127,7 +135,7 @@
 
         <div class="footer">
             <div class="footer-col">
-                <div class="date-val" id="displayDate">17 March 2026</div>
+                <div class="date-val" id="displayDate">March 17, 2026</div>
                 <div class="line">Date of Award</div>
             </div>
             <div class="footer-col">
@@ -143,21 +151,32 @@
         const name = document.getElementById('stuName').value;
         const grade = document.getElementById('stuGrade').value;
         const course = document.getElementById('stuCourse').value;
+        const logoInput = document.getElementById('logoUpload');
 
         if(name && grade && course) {
             const nameEl = document.getElementById('displayName');
             nameEl.innerText = name.toUpperCase();
             document.getElementById('displayGrade').innerText = grade;
             document.getElementById('displayCourse').innerText = course;
-            
             document.getElementById('displayDate').innerText = new Date().toLocaleDateString('en-GB', {
                 day: 'numeric', month: 'long', year: 'numeric'
             });
 
-            // Anti-Overlap Script
+            // Handle Logo Upload
+            if (logoInput.files && logoInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const certLogo = document.getElementById('certLogo');
+                    certLogo.src = e.target.result;
+                    certLogo.style.display = 'block';
+                }
+                reader.readAsDataURL(logoInput.files[0]);
+            }
+
+            // Shrink font for long names
             let size = 70;
             nameEl.style.fontSize = size + 'px';
-            while (nameEl.scrollWidth > 640 && size > 12) {
+            while (nameEl.scrollWidth > 640 && size > 10) {
                 size -= 2;
                 nameEl.style.fontSize = size + 'px';
             }
@@ -165,14 +184,14 @@
             document.getElementById('certificate').style.display = 'block';
             document.getElementById('downloadBtn').style.display = 'inline-block';
         } else {
-            alert("Please enter Name, Grade, and Program!");
+            alert("Please fill in the Name, Grade, and Program!");
         }
     }
 
     function download() {
-        html2canvas(document.getElementById('certificate'), { scale: 3 }).then(canvas => {
+        html2canvas(document.getElementById('certificate'), { scale: 3, useCORS: true }).then(canvas => {
             const link = document.createElement('a');
-            link.download = 'Vedantu_Demo_Award.png';
+            link.download = 'Vedantu_Demo_Certificate.png';
             link.href = canvas.toDataURL();
             link.click();
         });
