@@ -3,126 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vedantu Demo Superstar Certificate</title>
+    <title>Vedantu Demo Completion Certificate</title>
     <style>
-        /* Fun, bright background for kids */
+        /* Orange Theme & Kids Style */
         body { 
-            font-family: 'Comic Sans MS', cursive, sans-serif; 
-            background: #FF8C00; 
-            background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%); 
-            display: flex; flex-direction: column; align-items: center; padding: 20px; min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #ffede6; 
+            display: flex; flex-direction: column; align-items: center; padding: 30px; 
         }
-        
-        /* The Control Panel */
-        .input-panel { 
-            background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 25px; 
-            margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
-            border: 4px solid #fff; text-align: center; width: 95%; max-width: 500px;
+
+        /* Editor Panel */
+        .editor-panel { 
+            background: white; padding: 25px; border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 30px; 
+            border: 3px solid #ff4500; width: 100%; max-width: 500px; text-align: center;
         }
         input { 
-            padding: 12px; width: 85%; margin: 8px 0; border: 2px solid #FF8C00; 
-            border-radius: 12px; font-size: 16px; outline: none;
+            padding: 12px; width: 90%; margin: 10px 0; border: 2px solid #ddd; 
+            border-radius: 8px; font-size: 16px; outline: none;
         }
-        .btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+        input:focus { border-color: #ff4500; }
         button { 
-            padding: 15px 30px; background: #FF4500; color: white; border: none; 
-            border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 18px; 
-            box-shadow: 0 5px 0 #cc3700; transition: 0.2s;
+            padding: 15px 35px; background: #ff4500; color: white; border: none; 
+            border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 18px;
+            margin-top: 10px; box-shadow: 0 4px 0 #cc3700;
         }
-        button:hover { transform: translateY(-3px); box-shadow: 0 8px 0 #cc3700; }
-        button:active { transform: translateY(2px); box-shadow: 0 2px 0 #cc3700; }
-        .print-btn { background: #3b82f6; box-shadow: 0 5px 0 #1e40af; }
+        button:hover { background: #e63e00; }
 
-        /* The Certificate Design */
+        /* THE CERTIFICATE (Matches your Image exactly) */
         #certificate { 
-            display: none; width: 850px; height: 620px; background: white; 
-            border: 15px solid #FF4500; border-radius: 40px; position: relative;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3); text-align: center; overflow: hidden;
-            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            display: none; width: 900px; height: 650px; background: white; 
+            border: 25px solid #3b82f6; position: relative; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2); text-align: center;
         }
 
-        /* Decorative Corners */
-        .corner { position: absolute; width: 150px; opacity: 0.8; z-index: 0; }
-        .top-left { top: 0; left: 0; transform: rotate(0deg); }
-        .top-right { top: 0; right: 0; transform: rotate(90deg); }
+        /* Background Decorations (Book Club Style) */
+        .decor { position: absolute; font-size: 80px; opacity: 0.9; z-index: 1; }
+        .top-left { top: 20px; left: 20px; }
+        .top-right { top: 20px; right: 20px; }
+        .bottom-left { bottom: 20px; left: 20px; }
+        .bottom-right { bottom: 20px; right: 20px; }
 
-        .logo { width: 220px; margin-top: 40px; position: relative; z-index: 1; }
-        .main-title { color: #FF4500; font-size: 55px; margin: 10px 0; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
-        .sub-text { font-size: 22px; color: #555; margin: 5px 0; font-weight: bold; }
+        .logo-container { margin-top: 40px; }
+        .logo-main { width: 200px; }
         
+        .book-club-text { color: #d81b60; font-size: 40px; font-weight: bold; margin: 5px 0; }
+        .affirmation { color: #d81b60; font-size: 32px; font-weight: bold; margin: 20px 0; text-transform: uppercase; }
+        
+        .cert-text { font-size: 20px; color: #555; }
         .student-name { 
-            font-size: 60px; color: #3b82f6; font-weight: bold; margin: 15px 0; 
-            display: inline-block; border-bottom: 5px dashed #FFD700; padding: 0 20px;
+            font-size: 55px; color: #ff4500; font-weight: bold; 
+            margin: 10px 0; display: inline-block; padding: 0 30px;
         }
         
-        .details-text { font-size: 24px; color: #333; line-height: 1.5; margin: 10px 40px; }
-        .highlight { color: #FF4500; font-weight: bold; font-size: 28px; }
-        .motivation { color: #008080; font-size: 18px; font-style: italic; margin-top: 10px; font-weight: bold; }
+        .course-info { font-size: 22px; color: #333; line-height: 1.6; margin-top: 10px; }
+        .highlight { font-weight: bold; color: #3b82f6; }
 
+        /* Footer Section */
         .footer { 
-            position: absolute; bottom: 40px; width: 100%; display: flex; 
-            justify-content: space-around; align-items: center; 
+            position: absolute; bottom: 60px; width: 100%; display: flex; 
+            justify-content: space-around; align-items: flex-end; 
         }
-        .signature-box { text-align: center; }
-        .signature-img { font-family: 'Brush Script MT', cursive; font-size: 38px; color: #2c3e50; margin-bottom: -10px; }
-        .sig-line { border-top: 2px solid #333; width: 220px; padding-top: 5px; font-size: 14px; font-weight: bold; }
+        .signature-box { text-align: center; border-top: 2px solid #333; width: 220px; padding-top: 5px; }
+        .sig-name { font-family: 'Brush Script MT', cursive; font-size: 32px; color: #2c3e50; }
+        .date-box { font-size: 18px; font-weight: bold; border-bottom: 1px solid #333; padding-bottom: 5px; }
 
-        .badge {
-            position: absolute; top: 40px; right: 40px; width: 110px; height: 110px;
-            background: #FFD700; border-radius: 50%; border: 5px dotted #FF4500;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 60px; transform: rotate(15deg); box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Print formatting */
-        @media print { .input-panel { display: none; } body { background: white; } #certificate { display: block; box-shadow: none; border: 10px solid #FF4500; } }
+        @media print { .editor-panel { display: none; } body { padding: 0; } #certificate { display: block; box-shadow: none; border: 15px solid #3b82f6; } }
     </style>
 </head>
 <body>
 
-<div class="input-panel">
-    <h2 style="color: #FF4500; margin-top: 0;">🌟 Vedantu Certificate Maker</h2>
-    <input type="text" id="stuName" placeholder="Student's Full Name">
-    <input type="text" id="stuGrade" placeholder="Grade (e.g. Grade 2)">
-    <input type="text" id="stuCourse" placeholder="Demo Program (e.g. Coding & AI)">
-    <input type="text" id="stuDate" placeholder="Date (Leave blank for today)">
-    <div class="btn-group">
-        <button onclick="generate()">Create! 🚀</button>
-        <button onclick="window.print()" class="print-btn">Save / Print 🖨️</button>
-    </div>
+<div class="editor-panel">
+    <h2 style="color:#ff4500">Vedantu Demo Certificate</h2>
+    <input type="text" id="stuName" placeholder="Student Name (e.g. Rahul Kumar)">
+    <input type="text" id="stuGrade" placeholder="Grade (e.g. Grade 3)">
+    <input type="text" id="stuCourse" placeholder="Course/Program (e.g. Coding Demo)">
+    <input type="text" id="stuAff" placeholder="Affirmation (e.g. BRILLIANT!)">
+    <br>
+    <button onclick="generate()">Generate & Show 🚀</button>
+    <button onclick="window.print()" style="background:#3b82f6; box-shadow: 0 4px 0 #1d4ed8;">Save as PDF 📄</button>
 </div>
 
 <div id="certificate">
-    <div style="position:absolute; top:20px; left:20px; font-size:40px;">📚</div>
-    <div style="position:absolute; bottom:120px; left:30px; font-size:40px;">🎨</div>
-    <div style="position:absolute; bottom:120px; right:30px; font-size:40px;">🚀</div>
-    
-    <div class="badge">🏆</div>
+    <div class="decor top-left">📚</div>
+    <div class="decor top-right">📖</div>
+    <div class="decor bottom-left">💡</div>
+    <div class="decor bottom-right">🎓</div>
 
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Vedantu_Logo.png/640px-Vedantu_Logo.png" class="logo" alt="Vedantu">
-    
-    <div class="main-title">DEMO SUPERSTAR!</div>
-    <div class="sub-text">This achievement award is proudly given to</div>
-    
-    <div class="student-name" id="displayName">Student Name</div>
-    
-    <div class="details-text">
-        of <span class="highlight" id="displayGrade">Grade</span> <br>
-        for showing amazing curiosity and brilliance in our <br>
-        <span class="highlight" id="displayCourse">Demo Class</span>
+    <div class="logo-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Vedantu_Logo.png/640px-Vedantu_Logo.png" class="logo-main" alt="Vedantu">
     </div>
+    
+    <div class="book-club-text">DEMO COMPLETION</div>
+    <div class="affirmation" id="displayAff">EXCELLENT WORK!</div>
 
-    <div class="motivation">"Keep shining like a star and never stop learning!"</div>
+    <p class="cert-text">This is to certify that</p>
+    <div class="student-name" id="displayName">Student Name</div>
+
+    <div class="course-info">
+        a bright student of <span class="highlight" id="displayGrade">Grade X</span><br>
+        has successfully completed the <span class="highlight" id="displayCourse">Demo Program</span><br>
+        with amazing enthusiasm and curiosity!
+    </div>
 
     <div class="footer">
         <div>
-            <div style="font-size: 20px; font-weight: bold; color: #FF4500;" id="displayDate">Date</div>
-            <div style="font-size: 13px; color: #666; font-weight: bold;">Completion Date</div>
+            <div class="date-box" id="displayDate">Date</div>
+            <div style="font-size: 14px; margin-top:5px;">Date</div>
         </div>
-        <div class="signature-box">
-            <div class="signature-img">Vamsi Krishna</div>
-            <div class="sig-line">
-                Vamsi Krishna<br>
+        <div>
+            <div class="sig-name">Vamsi Krishna</div>
+            <div class="signature-box">
+                <strong>Vamsi Krishna</strong><br>
                 CEO & Co-Founder, Vedantu
             </div>
         </div>
@@ -134,22 +126,21 @@
         const name = document.getElementById('stuName').value;
         const grade = document.getElementById('stuGrade').value;
         const course = document.getElementById('stuCourse').value;
-        const manualDate = document.getElementById('stuDate').value;
-        
-        if (name && grade && course) {
+        const aff = document.getElementById('stuAff').value;
+
+        if(name && grade && course) {
             document.getElementById('displayName').innerText = name;
             document.getElementById('displayGrade').innerText = grade;
             document.getElementById('displayCourse').innerText = course;
-            
-            // Handle Date
-            const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-            document.getElementById('displayDate').innerText = manualDate || today;
-            
-            // Show certificate
+            document.getElementById('displayAff').innerText = aff || "EXCELLENT WORK!";
+            document.getElementById('displayDate').innerText = new Date().toLocaleDateString('en-GB', {
+                day: 'numeric', month: 'long', year: 'numeric'
+            });
+
             document.getElementById('certificate').style.display = 'block';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         } else {
-            alert("Please fill in the Name, Grade, and Program to create the award!");
+            alert("Please fill in Name, Grade, and Course!");
         }
     }
 </script>
