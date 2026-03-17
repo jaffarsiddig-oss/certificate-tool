@@ -3,114 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vedantu Demo Completion Certificate</title>
+    <title>Vedantu Demo Certificate</title>
     <style>
-        /* Orange & White Theme */
+        /* High-Energy Kids Theme */
         body { 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            background: #FFF5F0; 
+            font-family: 'Comic Sans MS', cursive, sans-serif; 
+            background: #FF8C00; 
+            background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%); 
             display: flex; flex-direction: column; align-items: center; padding: 20px; 
         }
 
-        /* Modern Editor Panel */
+        /* Editor Panel */
         .editor-panel { 
-            background: white; padding: 25px; border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 30px; 
-            border: 3px solid #FF4500; width: 100%; max-width: 500px; text-align: center;
+            background: white; padding: 20px; border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 25px; 
+            border: 4px solid #fff; width: 100%; max-width: 500px; text-align: center;
         }
         input { 
-            padding: 12px; width: 90%; margin: 8px 0; border: 2px solid #FFCCBC; 
-            border-radius: 10px; font-size: 16px; outline: none;
+            padding: 12px; width: 88%; margin: 8px 0; border: 2px solid #FF8C00; 
+            border-radius: 12px; font-size: 16px; outline: none;
         }
         button { 
             padding: 15px 35px; background: #FF4500; color: white; border: none; 
             border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 18px;
-            box-shadow: 0 4px 0 #bf3600; margin-top: 10px;
+            box-shadow: 0 5px 0 #cc3700; margin-top: 10px; transition: 0.2s;
         }
-        button:hover { background: #e63e00; transform: translateY(-2px); }
+        button:hover { transform: translateY(-3px); box-shadow: 0 8px 0 #cc3700; }
 
         /* THE CERTIFICATE DESIGN */
         #certificate { 
             display: none; width: 900px; height: 650px; background: white; 
-            border: 20px solid #FF4500; border-radius: 40px; position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2); text-align: center; overflow: hidden;
+            border: 15px solid #3b82f6; border-radius: 50px; position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4); text-align: center; overflow: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/white-diamond.png');
         }
 
-        /* Decorative Elements for Kids */
-        .decor { position: absolute; font-size: 45px; opacity: 0.8; z-index: 1; }
-        .top-left { top: 30px; left: 30px; }
-        .top-right { top: 30px; right: 30px; }
-        .bottom-left { bottom: 30px; left: 30px; }
-        .bottom-right { bottom: 30px; right: 30px; }
+        /* Rainbow Frame Inside */
+        #certificate::after {
+            content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 8px solid #FF4500; border-radius: 40px; pointer-events: none;
+        }
 
-        .logo-main { width: 280px; margin-top: 50px; }
+        /* Fun Floating Icons */
+        .kids-icon { position: absolute; font-size: 60px; z-index: 2; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-15px) rotate(10deg); } }
+
+        .logo-main { width: 280px; margin-top: 45px; position: relative; z-index: 3; }
         
-        .main-title { color: #FF4500; font-size: 55px; font-weight: 900; margin: 20px 0 10px 0; }
-        .sub-text { font-size: 22px; color: #555; font-weight: 600; }
+        .main-title { color: #d81b60; font-size: 60px; font-weight: 900; margin: 10px 0; text-shadow: 3px 3px #ffeb3b; }
         
         .student-name { 
             font-size: 65px; color: #1e88e5; font-weight: bold; 
-            margin: 15px 0; display: inline-block; padding: 0 40px;
-            border-bottom: 5px dashed #FFD700;
+            margin: 10px 0; display: inline-block; padding: 5px 40px;
+            background: #fff9c4; border-radius: 20px; border: 3px dashed #FF4500;
         }
         
-        .details { font-size: 26px; color: #333; line-height: 1.5; margin: 15px 60px; }
-        .orange-bold { color: #FF4500; font-weight: bold; }
+        /* Program Name Section - Bold & Clear */
+        .program-box {
+            background: #FF4500; color: white; display: inline-block;
+            padding: 10px 50px; border-radius: 50px; font-size: 32px;
+            font-weight: bold; margin: 15px 0; box-shadow: 0 5px 15px rgba(255,69,0,0.4);
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        .details { font-size: 24px; color: #333; margin: 10px 60px; line-height: 1.4; }
 
         .footer { 
-            position: absolute; bottom: 60px; width: 100%; display: flex; 
-            justify-content: space-around; align-items: flex-end; 
+            position: absolute; bottom: 50px; width: 100%; display: flex; 
+            justify-content: space-around; align-items: center; z-index: 3;
         }
-        .sig-box { text-align: center; border-top: 2px solid #333; width: 240px; padding-top: 5px; }
-        .sig-name { font-family: 'Brush Script MT', cursive; font-size: 34px; color: #2c3e50; }
-        .date-text { font-size: 20px; font-weight: bold; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .sig-box { text-align: center; }
+        .sig-name { font-family: 'Brush Script MT', cursive; font-size: 40px; color: #2c3e50; }
+        .sig-line { border-top: 3px solid #FF4500; width: 220px; padding-top: 5px; font-size: 15px; font-weight: bold; }
 
-        @media print { .editor-panel { display: none; } body { padding: 0; } #certificate { display: block; border: 12px solid #FF4500; } }
+        .badge-star {
+            position: absolute; top: 40px; right: 40px; width: 120px; height: 120px;
+            background: #FFD700; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            display: flex; align-items: center; justify-content: center; font-size: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        @media print { .editor-panel { display: none; } body { background: white; } #certificate { display: block; box-shadow: none; border: 10px solid #3b82f6; } }
     </style>
 </head>
 <body>
 
 <div class="editor-panel">
-    <h2 style="color:#FF4500; margin-top:0;">🌟 Demo Certificate Generator</h2>
-    <input type="text" id="stuName" placeholder="Student's Name">
-    <input type="text" id="stuGrade" placeholder="Grade (e.g. Grade 2)">
-    <input type="text" id="stuCourse" placeholder="Program Name (e.g. Science Magic)">
-    <input type="text" id="stuAff" placeholder="Special Note (e.g. BRAVO!)">
+    <h2 style="color:#FF4500; margin-top:0;">✨ Demo Certificate Creator</h2>
+    <input type="text" id="stuName" placeholder="Enter Child's Name">
+    <input type="text" id="stuGrade" placeholder="Enter Grade (e.g. Grade 1)">
+    <input type="text" id="stuCourse" placeholder="Program Name (e.g. SCIENCE MAGIC)">
     <br>
-    <button onclick="generate()">Generate Certificate 🚀</button>
-    <button onclick="window.print()" style="background:#1e88e5; box-shadow: 0 4px 0 #1565c0;">Save as PDF 📥</button>
+    <button onclick="generate()">Make It Pop! 🚀</button>
+    <button onclick="window.print()" style="background:#1e88e5; box-shadow: 0 5px 0 #1565c0;">Print / Save 📥</button>
 </div>
 
 <div id="certificate">
-    <div class="decor top-left">🚀</div>
-    <div class="decor top-right">🎨</div>
-    <div class="decor bottom-left">🏆</div>
-    <div class="decor bottom-right">💡</div>
+    <div class="kids-icon" style="top:20px; left:30px;">🚀</div>
+    <div class="kids-icon" style="top:180px; right:40px; animation-delay: 1s;">🎨</div>
+    <div class="kids-icon" style="bottom:120px; left:40px; animation-delay: 1.5s;">🧪</div>
+    <div class="kids-icon" style="bottom:40px; right:60px;">⭐</div>
+    
+    <div class="badge-star">🏆</div>
 
     <img src="https://raw.githubusercontent.com/jaffarsiddig-oss/certificate-tool/main/image_3035f6.png" class="logo-main" alt="Vedantu Early Learning">
     
-    <div class="main-title" id="displayAff">CERTIFICATE OF DEMO</div>
-    <div class="sub-text">This is proudly awarded to our superstar</div>
+    <div class="main-title">SUPERSTAR!</div>
+    <p style="font-size: 22px; color: #555; margin: 0;">This achievement is proudly presented to</p>
 
     <div class="student-name" id="displayName">Name</div>
 
     <div class="details">
-        of <span class="orange-bold" id="displayGrade">Grade</span> <br>
-        for completing the <span class="orange-bold" id="displayCourse">Demo Program</span> <br>
-        with amazing energy and a big smile!
+        A brilliant student of <span style="color:#FF4500; font-weight:900;" id="displayGrade">Grade</span><br>
+        for amazing performance in our
+    </div>
+
+    <div class="program-box" id="displayCourse">PROGRAM NAME</div>
+
+    <div style="font-size: 20px; color: #00897b; font-weight: bold; margin-top: 10px;">
+        "You are smart, you are brave, you are a genius!"
     </div>
 
     <div class="footer">
         <div>
-            <div class="date-text" id="displayDate">Date</div>
-            <div style="font-size: 14px; margin-top:5px;">Completion Date</div>
+            <div style="font-size: 22px; font-weight: bold; color: #FF4500;" id="displayDate">Date</div>
+            <div style="font-size: 14px; color: #666;">Date of Demo</div>
         </div>
-        <div>
+        <div class="sig-box">
             <div class="sig-name">Vamsi Krishna</div>
-            <div class="sig-box">
-                <strong>Vamsi Krishna</strong><br>
-                CEO & Co-Founder, Vedantu
-            </div>
+            <div class="sig-line">CEO & Co-Founder, Vedantu</div>
         </div>
     </div>
 </div>
@@ -120,13 +141,11 @@
         const name = document.getElementById('stuName').value;
         const grade = document.getElementById('stuGrade').value;
         const course = document.getElementById('stuCourse').value;
-        const aff = document.getElementById('stuAff').value;
 
         if(name && grade && course) {
             document.getElementById('displayName').innerText = name;
             document.getElementById('displayGrade').innerText = grade;
             document.getElementById('displayCourse').innerText = course;
-            document.getElementById('displayAff').innerText = aff || "CERTIFICATE OF DEMO";
             
             document.getElementById('displayDate').innerText = new Date().toLocaleDateString('en-GB', {
                 day: 'numeric', month: 'long', year: 'numeric'
@@ -135,7 +154,7 @@
             document.getElementById('certificate').style.display = 'block';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         } else {
-            alert("Please enter Name, Grade, and Program!");
+            alert("Oops! Please enter Name, Grade, and Program Name!");
         }
     }
 </script>
