@@ -3,173 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfectly Aligned Vedantu Certificate</title>
+    <title>Official Demo Achievement Certificate</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;900&display=swap');
+        /* Premium Typography (Libre Baskerville, Montserrat, Cinzel) */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;900&display=swap');
+
+        /* Color Palette: Navy (#2c3e50), Orange (#ff4500), Gold (#d4af37) */
 
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 20px; 
+            background: #fdf2f0; display: flex; flex-direction: column; align-items: center; padding: 20px; 
         }
 
-        /* UI Control Panel */
+        /* Control Panel */
         .admin-panel { 
-            background: white; padding: 25px; border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 30px; 
+            background: white; padding: 25px; border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 30px; 
             border-top: 6px solid #ff4500; width: 100%; max-width: 500px; text-align: center;
         }
-        input, select { padding: 12px; width: 90%; margin: 8px 0; border: 1.5px solid #eee; border-radius: 8px; font-size: 15px; color: #2c3e50; outline: none; }
-        .btn-gen { background: #ff4500; color: #fff; padding: 15px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; width: 95%; margin-top: 15px; font-size: 17px; }
-        .btn-dl { background: #22c55e; color: #fff; padding: 12px 25px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; display: none; margin-top: 15px; }
+        .upload-label { display: block; margin: 10px 0 5px; font-weight: bold; color: #ff4500; font-size: 14px; }
+        input, select { padding: 12px; width: 90%; margin: 8px 0; border: 1.5px solid #eee; border-radius: 8px; font-size: 16px; outline: none; }
+        .btn-gen { background: #ff4500; color: white; padding: 16px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 95%; font-size: 18px; margin-top: 10px; }
+        .btn-dl { background: #3b82f6; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; display: none; margin-top: 15px; }
 
-        /* THE CERTIFICATE */
+        /* THE CERTIFICATE CANVAS */
         #certificate { 
-            display: none; width: 1100px; height: 770px; background: #fff; position: relative;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.1); overflow: hidden; box-sizing: border-box;
+            display: none; width: 1100px; height: 770px; background: white; position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.2); overflow: hidden; box-sizing: border-box;
+            border: 12px solid #ff4500;
         }
 
+        /* Professional Background & Gold Frame */
         .bg-layer {
             position: absolute; width: 100%; height: 100%; top: 0; left: 0;
-            background-color: #ffffff;
-            background-image: radial-gradient(#ff4500 0.5px, transparent 0.5px);
-            background-size: 30px 30px; opacity: 0.04; z-index: 1;
+            background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fff9f5 100%);
+            z-index: 1;
         }
-
         .gold-frame {
-            position: absolute; top: 30px; left: 30px; right: 30px; bottom: 30px;
-            border: 2px solid #d4af37; z-index: 2;
+            position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px;
+            border: 2px solid #d4af37; z-index: 2; pointer-events: none;
         }
 
-        .cert-content { 
+        /* Elements */
+        .gold-seal { position: absolute; bottom: 50px; right: 50px; width: 120px; z-index: 10; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); }
+
+        /* NEW GRAPHIC: Achievement Cup on left */
+        .achievement-cup { position: absolute; top: 50px; left: 30px; width: 120px; z-index: 5; opacity: 0.1; }
+
+        .cert-body { 
             position: relative; z-index: 10; height: 100%; 
             display: flex; flex-direction: column; align-items: center; 
-            padding: 50px 80px; box-sizing: border-box; justify-content: space-between;
-            text-align: center;
+            justify-content: space-between; padding: 60px 40px; box-sizing: border-box; 
         }
 
-        /* Decorative Elements */
-        .symbol-star { position: absolute; top: 50px; right: 60px; width: 80px; opacity: 0.5; }
-        .symbol-seal { position: absolute; bottom: 70px; left: 80px; width: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); }
+        /* Logo Area - compressed */
+        .logo-box { margin-bottom: 5px; }
+        .logo-img { width: 340px; }
 
-        .logo-slot { height: 90px; width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
-        .logo-slot img { max-height: 100%; max-width: 450px; object-fit: contain; }
+        .header-content { text-align: center; }
+        .cert-type { color: #ff4500; font-size: 20px; font-weight: 700; letter-spacing: 7px; text-transform: uppercase; margin-bottom: 5px; }
+        .main-title { font-family: 'Cinzel', serif; color: #1a1a1a; font-size: 72px; font-weight: 700; margin: 0; line-height: 1; }
 
-        .header-box { width: 100%; }
-        .type-label { font-size: 14px; color: #ff4500; font-weight: 700; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 5px; }
-        .title-main { font-family: 'Cinzel', serif; font-size: 68px; color: #2c3e50; margin: 0; font-weight: 700; letter-spacing: 4px; }
-
-        .presented-to { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 22px; color: #5d6d7e; margin: 15px 0; }
+        /* Student Section - locked together */
+        .student-section { display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 15px; }
+        .presented-to { font-size: 22px; color: #666; font-style: italic; margin-bottom: 10px; }
         
-        /* ALIGNMENT FIXED: Flexbox centering for Name */
-        .name-wrapper { 
-            width: 100%; height: 120px; 
-            display: flex; align-items: center; justify-content: center; 
-            border-bottom: 2px solid #ff4500; margin: 0 auto;
-            max-width: 800px;
+        /* THE STRICT NAME CONTAINER (Prevents overwrite) */
+        .name-container { 
+            width: 700px; height: 110px; border-bottom: 2px solid #ff4500; 
+            display: flex; align-items: center; justify-content: center;
         }
         .student-name { 
-            font-family: 'Montserrat', sans-serif; font-size: 82px; color: #ff4500; 
-            font-weight: 900; margin: 0; text-transform: uppercase; 
-            white-space: nowrap; line-height: 1; text-align: center;
+            font-size: 85px; color: #ff4500; font-weight: 900; 
+            margin: 0; padding: 0; white-space: nowrap; transition: font-size 0.2s; 
         }
 
-        .achievement-text { font-family: 'Libre Baskerville', serif; font-size: 26px; color: #2c3e50; line-height: 1.6; margin-top: 20px; }
+        .achievement-details { font-size: 24px; color: #333; max-width: 850px; text-align: center; line-height: 1.5; margin-top: 20px; }
         
-        /* ALIGNMENT FIXED: Flexbox centering for Course */
-        .course-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 10px; }
-        .course-highlight { 
-            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 38px; 
-            color: #3b82f6; text-transform: uppercase; letter-spacing: 1px;
-            text-align: center; width: 100%;
+        /* Program Tag with Strict Anti-Overwrite */
+        .program-highlight { 
+            font-weight: 900; font-size: 38px; color: #3b82f6; text-transform: uppercase; 
+            display: block; margin-top: 10px; letter-spacing: 1px; white-space: nowrap; 
         }
 
+        /* Motto with Star Symbol */
         .motivation-quote { 
-            font-family: 'Libre Baskerville', serif; font-size: 19px; color: #5d6d7e; font-style: italic; 
-            padding: 15px 50px; margin-top: 15px; border-top: 1px solid #eee;
+            font-size: 19px; color: #777; font-style: italic; margin-top: 20px; 
+            border-top: 1px solid #eee; padding-top: 10px; text-align: center;
         }
 
-        /* Footer Alignment */
-        .footer-grid { width: 100%; display: grid; grid-template-columns: 1fr 1fr; margin-top: 30px; align-items: flex-end; }
+        /* FOOTER Grid (Zero Overwrite Guaranteed) */
+        .footer-grid { 
+            display: grid; grid-template-columns: 1fr 1fr;
+            width: 100%; padding: 0 80px; box-sizing: border-box;
+            align-items: flex-end; margin-top: 35px;
+        }
         .footer-col { text-align: center; }
-        .sig-font { font-family: 'Great Vibes', cursive; font-size: 50px; color: #2c3e50; margin-bottom: -10px; }
-        .date-val { font-size: 24px; font-weight: 700; color: #2c3e50; margin-bottom: 10px; }
-        .line { border-top: 2.5px solid #d4af37; padding-top: 12px; width: 280px; margin: 0 auto; font-size: 14px; font-weight: 700; text-transform: uppercase; color: #5d6d7e; letter-spacing: 1px; }
+        .ceo-font { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 38px; color: #2c3e50; line-height: 1; margin-bottom: -5px; }
+        .date-text { font-size: 24px; font-weight: 900; color: #1a1a1a; margin-bottom: 10px; }
+        .label-line { border-top: 2.5px solid #d4af37; padding-top: 10px; font-size: 14px; font-weight: bold; width: 280px; margin: 0 auto; color: #555; text-transform: uppercase; }
 
     </style>
 </head>
 <body>
 
 <div class="admin-panel">
-    <h2 style="color:#ff4500; margin-top:0;">Final Alignment Panel</h2>
-    <span class="upload-label">1. Upload Official Logo</span>
-    <input type="file" id="logoUpload" accept="image/*">
-    <input type="text" id="stuName" placeholder="Enter Student Name">
-    
+    <h2 style="color:#ff4500; margin-top:0;">Demo Certificate Generator</h2>
+    <input type="text" id="stuName" placeholder="Child's Full Name (e.g., Aryan Sharma)">
     <select id="stuGrade">
         <option value="" disabled selected>Select Grade</option>
         <option value="LKG">LKG</option><option value="UKG">UKG</option>
         <option value="Grade 1">Grade 1</option><option value="Grade 2">Grade 2</option>
         <option value="Grade 3">Grade 3</option><option value="Grade 4">Grade 4</option>
-        <option value="Grade 5">Grade 5</option><option value="Grade 6">Grade 6</option>
-        <option value="Grade 7">Grade 7</option><option value="Grade 8">Grade 8</option>
-        <option value="Grade 9">Grade 9</option><option value="Grade 10">Grade 10</option>
+        <option value="Grade 5">Grade 5</option>
     </select>
-
     <select id="stuCourse">
-        <option value="" disabled selected>Select Program</option>
+        <option value="" disabled selected>Select Demo Program</option>
         <option value="English Superstar">English Superstar</option>
         <option value="Super Math">Super Math</option>
         <option value="Super Speaker">Super Speaker</option>
         <option value="Super Coder">Super Coder</option>
     </select>
-
-    <button class="btn-gen" onclick="generate()">Generate & Align ✨</button>
-    <button id="downloadBtn" class="btn-dl" onclick="downloadCert()">Save Image 📥</button>
+    <button class="btn-gen" onclick="generate()">Generate Achievement Award ✨</button>
+    <button id="downloadBtn" class="btn-dl" onclick="downloadCert()">Save as High-Res PNG 📥</button>
 </div>
 
 <div id="certificate">
-    <div class="bg-layer"></div>
-    <div class="gold-frame"></div>
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" class="symbol-star">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Gold_seal.png" class="symbol-seal">
+    <div class="bg-pattern"></div>
+    <div class="inner-frame"></div>
+    <img src="https://jaffarsiddig-oss.github.io/certificate-tool/image_2ec97d.jpg" class="achievement-cup" alt="Gold Cup">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Gold_seal.png" class="gold-seal" alt="Seal">
 
-    <div class="cert-content">
-        <div class="logo-slot">
-            <img id="certLogo" src="" alt="" style="display:none;">
+    <div class="cert-body">
+        <div class="logo-box">
+            <img src="https://jaffarsiddig-oss.github.io/certificate-tool/image_2fccda.png" class="logo-img" alt="Vedantu Logo">
         </div>
         
-        <div class="header-box">
-            <div class="type-label">Certificate of Achievement</div>
-            <h1 class="title-main">CONGRATULATIONS</h1>
+        <div class="header-content">
+            <div class="cert-type">Certificate of Achievement</div>
+            <div class="main-title">CONGRATULATIONS</div>
         </div>
 
-        <div style="width: 100%;">
-            <p class="presented-to">This honor is proudly awarded to</p>
-            <div class="name-wrapper">
-                <p class="student-name" id="displayName">NAME</p>
-            </div>
-            
-            <p class="achievement-text">
-                of <span style="font-weight: 700; color:#ff4500;" id="displayGrade">GRADE</span> for demonstrating exceptional skill <br> during the official demo session of
-            </p>
-            <div class="course-wrapper">
-                <span class="course-highlight" id="displayCourse">PROGRAM</span>
+        <div class="student-section">
+            <div class="presented-to">This recognition is proudly presented to</div>
+            <div class="name-container">
+                <p class="student-name" id="displayName">STUDENT NAME</p>
             </div>
         </div>
 
-        <p class="motivation-quote">
-            "The future belongs to the curious. Keep shining and learning!"
-        </p>
+        <div class="achievement-details">
+            of <span style="font-weight:900; color:#ff4500;" id="displayGrade">GRADE</span> for demonstrating exceptional curiosity and potential <br> during the official demo session of
+            <div class="program-highlight" id="displayCourse">PROGRAM NAME</div>
+        </div>
+
+        <div class="motivation-quote">
+            ✨ "The future belongs to the curious. Keep shining and learning!" ✨
+        </div>
 
         <div class="footer-grid">
             <div class="footer-col">
-                <div class="date-val" id="displayDate">March 17, 2026</div>
-                <div class="line">Date of Award</div>
+                <div class="date-text" id="displayDate">17 March 2026</div>
+                <div class="sig-line">Date of Achievement</div>
             </div>
             <div class="footer-col">
-                <div class="sig-font">Vamsi Krishna</div>
-                <div class="line">Vamsi Krishna, CEO & Co-Founder</div>
+                <div class="ceo-font">Vamsi Krishna</div>
+                <div class="label-line">
+                    Vamsi Krishna<br>CEO & Co-Founder, Vedantu
+                </div>
             </div>
         </div>
     </div>
@@ -180,58 +181,48 @@
         const name = document.getElementById('stuName').value;
         const grade = document.getElementById('stuGrade').value;
         const course = document.getElementById('stuCourse').value;
-        const logoFile = document.getElementById('logoUpload').files[0];
 
         if(name && grade && course) {
+            // Apply text
             const nameEl = document.getElementById('displayName');
-            const courseEl = document.getElementById('displayCourse');
-
             nameEl.innerText = name.toUpperCase();
             document.getElementById('displayGrade').innerText = grade;
-            courseEl.innerText = course;
             
+            const courseEl = document.getElementById('displayCourse');
+            courseEl.innerText = course;
+
+            // Set Date
             document.getElementById('displayDate').innerText = new Date().toLocaleDateString('en-GB', {
                 day: 'numeric', month: 'long', year: 'numeric'
             });
 
-            if (logoFile) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const certLogo = document.getElementById('certLogo');
-                    certLogo.src = e.target.result;
-                    certLogo.style.display = 'block';
-                }
-                reader.readAsDataURL(logoFile);
-            }
-
-            // AUTO-ALIGNMENT & SCALING
-            adjustFont(nameEl, 82, 780); 
-            adjustFont(courseEl, 38, 900); 
+            // STRICT ANTI-OVERWRITE ENGINE
+            // If the name is too long, shrink the font size
+            adjustFontSize(nameEl, 85, 680); // Start at 85px, must fit in 680px
+            adjustFontSize(courseEl, 38, 800); // Start at 38px, must fit in 800px
 
             document.getElementById('certificate').style.display = 'block';
             document.getElementById('downloadBtn').style.display = 'inline-block';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         } else {
-            alert("Please fill in all details!");
+            alert("Please provide the Superstar's details!");
         }
     }
 
-    function adjustFont(el, startSize, maxWidth) {
-        let size = startSize;
-        el.style.fontSize = size + 'px';
-        // Reduce size until it fits width
-        while (el.scrollWidth > maxWidth && size > 12) {
-            size -= 1;
-            el.style.fontSize = size + 'px';
+    // Smart-Fit Function: measures text width and reduces font until it fits.
+    function adjustFontSize(element, originalSize, maxWidth) {
+        element.style.fontSize = originalSize + 'px'; // Reset to large
+        let currentSize = originalSize;
+        while (element.scrollWidth > maxWidth && currentSize > 12) {
+            currentSize -= 2; // Shrink font in steps
+            element.style.fontSize = currentSize + 'px';
         }
     }
 
     function downloadCert() {
-        html2canvas(document.getElementById('certificate'), { useCORS: true, scale: 3 }).then(canvas => {
-            const link = document.createElement('a');
-            link.download = 'Aligned_Vedantu_Certificate.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
+        const cert = document.getElementById('certificate');
+        html2canvas(cert, { useCORS: true, scale: 3 }).then(canvas => {
+            const link = document.createElement('a'); link.download = 'Vedantu_Demo_Award.png'; link.href = canvas.toDataURL(); link.click();
         });
     }
 </script>
