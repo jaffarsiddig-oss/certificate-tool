@@ -3,100 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Vedantu Certificate</title>
+    <title>Perfectly Aligned Vedantu Certificate</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        /* Loading Premium Academic & Script Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;900&display=swap');
 
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background: #f4f7f9; display: flex; flex-direction: column; align-items: center; padding: 20px; 
+            background: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 20px; 
         }
 
+        /* UI Control Panel */
         .admin-panel { 
             background: white; padding: 25px; border-radius: 15px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 30px; 
             border-top: 6px solid #ff4500; width: 100%; max-width: 500px; text-align: center;
         }
-        .upload-label { display: block; margin: 10px 0 5px; font-weight: bold; color: #ff4500; font-size: 14px; }
         input, select { padding: 12px; width: 90%; margin: 8px 0; border: 1.5px solid #eee; border-radius: 8px; font-size: 15px; color: #2c3e50; outline: none; }
-        
         .btn-gen { background: #ff4500; color: #fff; padding: 15px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; width: 95%; margin-top: 15px; font-size: 17px; }
         .btn-dl { background: #22c55e; color: #fff; padding: 12px 25px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; display: none; margin-top: 15px; }
 
+        /* THE CERTIFICATE */
         #certificate { 
             display: none; width: 1100px; height: 770px; background: #fff; position: relative;
             box-shadow: 0 40px 100px rgba(0,0,0,0.1); overflow: hidden; box-sizing: border-box;
-            border: 1px solid #ddd;
         }
 
         .bg-layer {
             position: absolute; width: 100%; height: 100%; top: 0; left: 0;
             background-color: #ffffff;
             background-image: radial-gradient(#ff4500 0.5px, transparent 0.5px);
-            background-size: 25px 25px; opacity: 0.03;
-            z-index: 1;
+            background-size: 30px 30px; opacity: 0.04; z-index: 1;
         }
 
         .gold-frame {
-            position: absolute; top: 25px; left: 25px; right: 25px; bottom: 25px;
+            position: absolute; top: 30px; left: 30px; right: 30px; bottom: 30px;
             border: 2px solid #d4af37; z-index: 2;
         }
 
         .cert-content { 
             position: relative; z-index: 10; height: 100%; 
             display: flex; flex-direction: column; align-items: center; 
-            padding: 40px 60px; box-sizing: border-box; justify-content: space-between;
+            padding: 50px 80px; box-sizing: border-box; justify-content: space-between;
+            text-align: center;
         }
 
-        .symbol-star { position: absolute; top: 45px; right: 45px; width: 70px; opacity: 0.6; }
-        .symbol-seal { position: absolute; bottom: 60px; left: 60px; width: 130px; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1)); }
+        /* Decorative Elements */
+        .symbol-star { position: absolute; top: 50px; right: 60px; width: 80px; opacity: 0.5; }
+        .symbol-seal { position: absolute; bottom: 70px; left: 80px; width: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); }
 
-        .logo-slot { height: 90px; display: flex; align-items: center; justify-content: center; }
-        .logo-slot img { max-height: 100%; max-width: 400px; object-fit: contain; }
+        .logo-slot { height: 90px; width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+        .logo-slot img { max-height: 100%; max-width: 450px; object-fit: contain; }
 
-        .header-box { text-align: center; }
-        .type-label { font-size: 14px; color: #ff4500; font-weight: 700; letter-spacing: 7px; text-transform: uppercase; }
+        .header-box { width: 100%; }
+        .type-label { font-size: 14px; color: #ff4500; font-weight: 700; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 5px; }
+        .title-main { font-family: 'Cinzel', serif; font-size: 68px; color: #2c3e50; margin: 0; font-weight: 700; letter-spacing: 4px; }
+
+        .presented-to { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 22px; color: #5d6d7e; margin: 15px 0; }
         
-        /* NEW HEADER FONT */
-        .title-main { font-family: 'Cinzel', serif; font-size: 65px; color: #2c3e50; margin: 10px 0; font-weight: 700; letter-spacing: 3px; }
+        /* ALIGNMENT FIXED: Flexbox centering for Name */
+        .name-wrapper { 
+            width: 100%; height: 120px; 
+            display: flex; align-items: center; justify-content: center; 
+            border-bottom: 2px solid #ff4500; margin: 0 auto;
+            max-width: 800px;
+        }
+        .student-name { 
+            font-family: 'Montserrat', sans-serif; font-size: 82px; color: #ff4500; 
+            font-weight: 900; margin: 0; text-transform: uppercase; 
+            white-space: nowrap; line-height: 1; text-align: center;
+        }
 
-        .presented-to { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 22px; color: #5d6d7e; margin-top: 10px; }
+        .achievement-text { font-family: 'Libre Baskerville', serif; font-size: 26px; color: #2c3e50; line-height: 1.6; margin-top: 20px; }
         
-        .name-container { margin: 10px 0; border-bottom: 2px solid #ff4500; width: 750px; height: 110px; display: flex; align-items: center; justify-content: center; }
-        
-        /* MODERN BOLD NAME FONT */
-        .student-name { font-family: 'Montserrat', sans-serif; font-size: 78px; color: #ff4500; font-weight: 900; margin: 0; text-transform: uppercase; white-space: nowrap; letter-spacing: -1px; }
-
-        .achievement-text { font-family: 'Libre Baskerville', serif; font-size: 25px; color: #2c3e50; text-align: center; max-width: 880px; line-height: 1.5; }
-        .course-highlight { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 36px; color: #3b82f6; text-transform: uppercase; display: block; margin-top: 8px; }
+        /* ALIGNMENT FIXED: Flexbox centering for Course */
+        .course-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 10px; }
+        .course-highlight { 
+            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 38px; 
+            color: #3b82f6; text-transform: uppercase; letter-spacing: 1px;
+            text-align: center; width: 100%;
+        }
 
         .motivation-quote { 
             font-family: 'Libre Baskerville', serif; font-size: 19px; color: #5d6d7e; font-style: italic; 
-            padding: 10px 40px; margin: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee;
+            padding: 15px 50px; margin-top: 15px; border-top: 1px solid #eee;
         }
 
-        .footer-grid { width: 100%; display: grid; grid-template-columns: 1fr 1fr; margin-top: 20px; align-items: flex-end; }
+        /* Footer Alignment */
+        .footer-grid { width: 100%; display: grid; grid-template-columns: 1fr 1fr; margin-top: 30px; align-items: flex-end; }
         .footer-col { text-align: center; }
-        
-        /* SIGNATURE SCRIPT FONT */
-        .sig-font { font-family: 'Great Vibes', cursive; font-size: 45px; color: #2c3e50; margin-bottom: -5px; }
-        
-        .date-val { font-size: 22px; font-weight: 700; color: #2c3e50; margin-bottom: 8px; }
-        .line { border-top: 2px solid #d4af37; padding-top: 10px; width: 260px; margin: 0 auto; font-size: 13px; font-weight: 700; text-transform: uppercase; color: #5d6d7e; letter-spacing: 1px; }
+        .sig-font { font-family: 'Great Vibes', cursive; font-size: 50px; color: #2c3e50; margin-bottom: -10px; }
+        .date-val { font-size: 24px; font-weight: 700; color: #2c3e50; margin-bottom: 10px; }
+        .line { border-top: 2.5px solid #d4af37; padding-top: 12px; width: 280px; margin: 0 auto; font-size: 14px; font-weight: 700; text-transform: uppercase; color: #5d6d7e; letter-spacing: 1px; }
 
     </style>
 </head>
 <body>
 
 <div class="admin-panel">
-    <h2 style="color:#ff4500; margin-top:0;">Premium Certificate Panel</h2>
-    
-    <span class="upload-label">1. Upload Brand Logo</span>
+    <h2 style="color:#ff4500; margin-top:0;">Final Alignment Panel</h2>
+    <span class="upload-label">1. Upload Official Logo</span>
     <input type="file" id="logoUpload" accept="image/*">
-
-    <input type="text" id="stuName" placeholder="Student Full Name">
+    <input type="text" id="stuName" placeholder="Enter Student Name">
     
     <select id="stuGrade">
         <option value="" disabled selected>Select Grade</option>
@@ -116,8 +124,8 @@
         <option value="Super Coder">Super Coder</option>
     </select>
 
-    <button class="btn-gen" onclick="generate()">Generate Certificate ✨</button>
-    <button id="downloadBtn" class="btn-dl" onclick="downloadCert()">Download HD PNG 📥</button>
+    <button class="btn-gen" onclick="generate()">Generate & Align ✨</button>
+    <button id="downloadBtn" class="btn-dl" onclick="downloadCert()">Save Image 📥</button>
 </div>
 
 <div id="certificate">
@@ -133,28 +141,30 @@
         
         <div class="header-box">
             <div class="type-label">Certificate of Achievement</div>
-            <div class="title-main">CONGRATULATIONS</div>
+            <h1 class="title-main">CONGRATULATIONS</h1>
         </div>
 
-        <div style="text-align: center;">
-            <div class="presented-to">This honor is proudly awarded to</div>
-            <div class="name-container">
-                <p class="student-name" id="displayName">STUDENT NAME</p>
+        <div style="width: 100%;">
+            <p class="presented-to">This honor is proudly awarded to</p>
+            <div class="name-wrapper">
+                <p class="student-name" id="displayName">NAME</p>
             </div>
             
-            <div class="achievement-text">
-                of <span style="font-weight: 700; color:#ff4500;" id="displayGrade">GRADE</span> for demonstrating exceptional curiosity <br> during the official demo session of
-                <span class="course-highlight" id="displayCourse">PROGRAM NAME</span>
+            <p class="achievement-text">
+                of <span style="font-weight: 700; color:#ff4500;" id="displayGrade">GRADE</span> for demonstrating exceptional skill <br> during the official demo session of
+            </p>
+            <div class="course-wrapper">
+                <span class="course-highlight" id="displayCourse">PROGRAM</span>
             </div>
         </div>
 
-        <div class="motivation-quote">
+        <p class="motivation-quote">
             "The future belongs to the curious. Keep shining and learning!"
-        </div>
+        </p>
 
         <div class="footer-grid">
             <div class="footer-col">
-                <div class="date-val" id="displayDate">17 March 2026</div>
+                <div class="date-val" id="displayDate">March 17, 2026</div>
                 <div class="line">Date of Award</div>
             </div>
             <div class="footer-col">
@@ -194,9 +204,9 @@
                 reader.readAsDataURL(logoFile);
             }
 
-            // Auto-Scaling Fonts
-            adjustFont(nameEl, 78, 720); 
-            adjustFont(courseEl, 36, 850); 
+            // AUTO-ALIGNMENT & SCALING
+            adjustFont(nameEl, 82, 780); 
+            adjustFont(courseEl, 38, 900); 
 
             document.getElementById('certificate').style.display = 'block';
             document.getElementById('downloadBtn').style.display = 'inline-block';
@@ -209,8 +219,9 @@
     function adjustFont(el, startSize, maxWidth) {
         let size = startSize;
         el.style.fontSize = size + 'px';
+        // Reduce size until it fits width
         while (el.scrollWidth > maxWidth && size > 12) {
-            size--;
+            size -= 1;
             el.style.fontSize = size + 'px';
         }
     }
@@ -218,7 +229,7 @@
     function downloadCert() {
         html2canvas(document.getElementById('certificate'), { useCORS: true, scale: 3 }).then(canvas => {
             const link = document.createElement('a');
-            link.download = 'Vedantu_Premium_Award.png';
+            link.download = 'Aligned_Vedantu_Certificate.png';
             link.href = canvas.toDataURL('image/png');
             link.click();
         });
