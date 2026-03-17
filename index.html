@@ -3,138 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vedantu KG Superstar Award</title>
+    <title>Vedantu Achievement Certificate</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        /* Playful KG Theme */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
         body { 
-            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif; 
-            background: #e0f7fa; 
-            display: flex; flex-direction: column; align-items: center; padding: 20px; 
+            background: #f0f2f5; font-family: 'Montserrat', sans-serif; 
+            display: flex; flex-direction: column; align-items: center; padding: 40px; 
         }
 
-        .editor-panel { 
-            background: white; padding: 20px; border-radius: 20px; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin-bottom: 30px; 
-            width: 100%; max-width: 500px; text-align: center; border: 4px solid #ff8a65;
+        /* Editor UI */
+        .admin-panel { 
+            background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px; width: 100%; max-width: 600px; text-align: center; border-top: 6px solid #ff4500;
         }
-        input, select { padding: 12px; width: 88%; margin: 10px 0; border: 2px solid #ddd; border-radius: 15px; font-size: 16px; outline: none; }
-        input:focus { border-color: #ff4500; }
-        
-        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 10px; }
-        .btn { padding: 12px 25px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 0 #ccc; }
-        .btn-gen { background: #ff4500; color: white; box-shadow: 0 4px 0 #b33000; }
-        .btn-dl { background: #4caf50; color: white; display: none; box-shadow: 0 4px 0 #2e7d32; }
-        .btn:active { transform: translateY(4px); box-shadow: none; }
+        input, select { padding: 12px; width: 90%; margin: 10px 0; border: 1.5px solid #eee; border-radius: 8px; font-size: 16px; }
+        .gen-btn { background: #ff4500; color: #fff; padding: 15px 35px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 18px; width: 95%; margin-top: 10px; }
+        .dl-btn { background: #3b82f6; color: #fff; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: none; margin-top: 15px; }
 
-        /* THE KG CERTIFICATE DESIGN */
+        /* THE CERTIFICATE */
         #certificate { 
-            display: none; width: 950px; height: 700px; background: #fff; 
-            position: relative; overflow: hidden; border: 12px solid #ffcc33;
-            border-radius: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            background-image: linear-gradient(to bottom, #ffffff, #e3f2fd);
+            display: none; width: 1100px; height: 770px; background: #fff; position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2); overflow: hidden; box-sizing: border-box;
         }
 
-        /* Cute Decorative Elements */
-        .sun { position: absolute; top: -30px; left: -30px; font-size: 120px; z-index: 1; }
-        .cloud { position: absolute; font-size: 80px; color: rgba(255,255,255,0.9); z-index: 1; opacity: 0.8; }
-        .star { position: absolute; font-size: 30px; color: #ffcc33; z-index: 1; animation: twinkle 2s infinite; }
-        @keyframes twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
-
-        .logo-area { text-align: center; margin-top: 40px; position: relative; z-index: 10; }
-        .logo-img { width: 240px; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); }
-
-        .main-title { 
-            font-size: 60px; color: #ff4500; font-weight: 900; margin: 10px 0; 
-            text-shadow: 3px 3px 0px #fff, 5px 5px 0px #ffe0b2; position: relative; z-index: 10;
+        /* Premium Border Logic */
+        .frame { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            border: 25px solid transparent; 
+            border-image: linear-gradient(45deg, #ff4500, #3b82f6) 1;
+            z-index: 5; pointer-events: none;
         }
 
-        .content-body { position: relative; z-index: 10; text-align: center; margin-top: 20px; }
-        .presented-text { font-size: 24px; color: #555; }
-        
+        /* HD Background Pattern */
+        .bg-overlay {
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.95), rgba(245, 247, 250, 0.98)),
+                        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff4500' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+        .cert-body { position: relative; z-index: 10; padding: 60px 80px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
+
+        .logo-box { margin-bottom: 20px; }
+        .logo-img { width: 320px; }
+
+        .title-area { margin-bottom: 20px; }
+        .cert-label { font-size: 18px; letter-spacing: 8px; color: #777; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
+        .main-heading { font-size: 68px; font-weight: 900; color: #1a1a1a; margin: 0; line-height: 1; }
+
+        .recipient-area { margin: 30px 0; }
+        .present-text { font-size: 22px; color: #555; font-family: 'Playfair Display', serif; font-style: italic; }
         .student-name { 
-            font-size: 75px; color: #1e88e5; font-weight: bold; 
-            margin: 15px 0; display: inline-block; padding: 0 40px;
-            background: rgba(255,255,255,0.7); border-radius: 100px;
-            border: 4px dashed #ff8a65;
+            font-size: 72px; color: #ff4500; font-weight: 900; margin: 10px 0;
+            border-bottom: 3px solid #ff4500; display: inline-block; padding: 0 40px;
         }
 
+        .achievement-text { font-size: 24px; color: #333; line-height: 1.5; margin: 20px 0; }
+        .grade-pill { color: #3b82f6; font-weight: 900; }
+        
+        /* Program Badge - No overwrite guaranteed */
         .program-badge {
-            background: #ffcc33; color: #4e342e; display: inline-block;
-            padding: 12px 50px; border-radius: 50px; font-size: 34px;
-            font-weight: 800; margin-top: 20px; box-shadow: 0 6px 0 #ffa000;
+            background: #1a1a1a; color: #fff; padding: 15px 50px; border-radius: 4px;
+            font-size: 30px; font-weight: 900; display: inline-block; margin-top: 10px;
+            letter-spacing: 2px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .motto { font-size: 20px; color: #78909c; font-style: italic; margin-top: 40px; }
-
-        /* Footer - Positioned to Avoid Overlap */
-        .footer { 
-            position: absolute; bottom: 60px; width: 100%;
-            display: flex; justify-content: space-around; align-items: flex-end; z-index: 10;
+        .footer-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 100px; 
+            margin-top: 40px; padding: 0 50px;
         }
-        .footer-item { text-align: center; }
-        .sig-name { font-family: 'Brush Script MT', cursive; font-size: 45px; color: #2c3e50; }
-        .sig-line { border-top: 3px solid #ffcc33; padding-top: 8px; font-size: 15px; font-weight: bold; width: 220px; color: #555; }
-        .date-val { font-size: 22px; font-weight: bold; color: #ff4500; margin-bottom: 5px; }
+        .footer-col { text-align: center; }
+        .sig-img { font-family: 'Playfair Display', serif; font-size: 45px; font-style: italic; color: #2c3e50; line-height: 1; margin-bottom: -10px; }
+        .date-text { font-size: 24px; font-weight: 900; color: #1a1a1a; margin-bottom: 10px; }
+        .sig-line { border-top: 2px solid #333; padding-top: 10px; font-size: 14px; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 1px; }
 
+        /* Security Watermark */
+        .watermark { 
+            position: absolute; bottom: 40px; right: 40px; width: 150px; height: 150px;
+            border: 4px solid #ff4500; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; transform: rotate(-15deg); opacity: 0.15;
+            color: #ff4500; font-weight: 900; font-size: 20px; text-align: center;
+        }
     </style>
 </head>
 <body>
 
-<div class="editor-panel">
-    <h2 style="color:#ff4500; margin-bottom:15px;">✨ KG Superstar Maker ✨</h2>
-    <input type="text" id="stuName" placeholder="Little Student's Name">
-    <input type="text" id="stuGrade" placeholder="Class (e.g. KG-1 or Nursery)">
-    <select id="stuCourse">
-        <option value="" disabled selected>Select the Fun Program</option>
-        <option value="English Superstar">English Superstar</option>
-        <option value="Super Math">Super Math</option>
-        <option value="Super Speaker">Super Speaker</option>
-        <option value="Super Coder">Super Coder</option>
+<div class="admin-panel">
+    <h2 style="margin-top:0; color:#ff4500;">Vedantu Achievement Portal</h2>
+    <input type="text" id="stuName" placeholder="Full Name (Student)">
+    <select id="stuGrade">
+        <option value="" disabled selected>Select Grade</option>
+        <option value="KG">KG</option>
+        <option value="Grade 1">Grade 1</option>
+        <option value="Grade 2">Grade 2</option>
+        <option value="Grade 3">Grade 3</option>
+        <option value="Grade 4">Grade 4</option>
+        <option value="Grade 5">Grade 5</option>
+        <option value="Grade 6">Grade 6</option>
+        <option value="Grade 7">Grade 7</option>
+        <option value="Grade 8">Grade 8</option>
+        <option value="Grade 9">Grade 9</option>
+        <option value="Grade 10">Grade 10</option>
     </select>
-    <div class="btn-group">
-        <button class="btn btn-gen" onclick="generate()">Make it Shine! 🚀</button>
-        <button id="downloadBtn" class="btn btn-dl" onclick="downloadCert()">Save for Mommy & Daddy 📸</button>
-    </div>
+    <select id="stuCourse">
+        <option value="" disabled selected>Select Program</option>
+        <option value="ENGLISH SUPERSTAR">English Superstar</option>
+        <option value="SUPER MATH">Super Math</option>
+        <option value="SUPER SPEAKER">Super Speaker</option>
+        <option value="SUPER CODER">Super Coder</option>
+    </select>
+    <button class="gen-btn" onclick="generate()">Generate Achievement Certificate</button>
+    <button id="downloadBtn" class="dl-btn" onclick="downloadCert()">Download High-Res (PNG) 📥</button>
 </div>
 
 <div id="certificate">
-    <div class="sun">☀️</div>
-    <div class="cloud" style="top:50px; right:60px;">☁️</div>
-    <div class="cloud" style="top:250px; left:20px; font-size:60px;">☁️</div>
-    <div class="star" style="top:100px; left:300px;">⭐</div>
-    <div class="star" style="top:400px; right:200px;">⭐</div>
-    <div class="star" style="bottom:100px; left:100px;">⭐</div>
-    
-    <div class="logo-area">
-        <img src="https://jaffarsiddig-oss.github.io/certificate-tool/image_2fccda.png" class="logo-img" alt="Vedantu Logo">
-    </div>
+    <div class="frame"></div>
+    <div class="bg-overlay"></div>
+    <div class="watermark">OFFICIAL<br>ACHIEVEMENT</div>
 
-    <div class="content-body">
-        <div class="main-title">SUPERSTAR!</div>
-        <div class="presented-text">This special award goes to</div>
-        
-        <div class="student-name" id="displayName">KIDDO NAME</div>
-        
-        <div style="font-size: 24px; color: #444; margin-top: 15px;">
-            A bright spark in <span style="color:#ff4500; font-weight:bold;" id="displayGrade">KG</span> who did amazing in
+    <div class="cert-body">
+        <div class="logo-box">
+            <img src="https://jaffarsiddig-oss.github.io/certificate-tool/image_2fccda.png" class="logo-img" alt="Vedantu Logo">
         </div>
 
-        <div class="program-badge" id="displayCourse">PROGRAM NAME</div>
-        
-        <div class="motto">"You are smart, you are brave, you are a genius!"</div>
-    </div>
-
-    <div class="footer">
-        <div class="footer-item">
-            <div class="date-val" id="displayDate">March 17, 2026</div>
-            <div class="sig-line">AWARD DATE</div>
+        <div class="title-area">
+            <div class="cert-label">This certificate recognizes that</div>
+            <div class="student-name" id="displayName">NAME HERE</div>
         </div>
-        <div class="footer-item">
-            <div class="sig-name">Vamsi Krishna</div>
-            <div class="sig-line">
-                Vamsi Krishna<br>
-                CEO & Co-Founder, Vedantu
+
+        <div class="achievement-section">
+            <div class="achievement-text">
+                of <span class="grade-pill" id="displayGrade">GRADE</span> has successfully participated in the <br>
+                Vedantu Demo Session and is hereby recognized as a
+            </div>
+            <div class="program-badge" id="displayCourse">PROGRAM NAME</div>
+        </div>
+
+        <div class="motto-box">
+            <p style="font-size: 18px; font-style: italic; color: #888;">"Every child is a genius in their own way. Keep shining!"</p>
+        </div>
+
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="date-text" id="displayDate">March 17, 2026</div>
+                <div class="sig-line">Date of Completion</div>
+            </div>
+            <div class="footer-col">
+                <div class="sig-img">Vamsi Krishna</div>
+                <div class="sig-line">Vamsi Krishna, CEO & Co-Founder</div>
             </div>
         </div>
     </div>
@@ -157,19 +175,19 @@
             document.getElementById('displayDate').innerText = today;
 
             document.getElementById('certificate').style.display = 'block';
-            document.getElementById('downloadBtn').style.display = 'block';
+            document.getElementById('downloadBtn').style.display = 'inline-block';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         } else {
-            alert("Please fill in all the magic details!");
+            alert("Please fill in all details for the student!");
         }
     }
 
     function downloadCert() {
         const cert = document.getElementById('certificate');
-        html2canvas(cert, { useCORS: true, scale: 2 }).then(canvas => {
+        html2canvas(cert, { useCORS: true, scale: 3 }).then(canvas => {
             const link = document.createElement('a');
-            link.download = 'My_Superstar_Certificate.png';
-            link.href = canvas.toDataURL();
+            link.download = 'Vedantu_Achievement_Certificate.png';
+            link.href = canvas.toDataURL('image/png');
             link.click();
         });
     }
