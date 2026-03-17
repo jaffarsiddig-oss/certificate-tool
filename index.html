@@ -3,72 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vedantu Demo Certificate</title>
+    <title>Vedantu Official Demo Certificate</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
+        /* Premium Styling */
         body { 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            background: #ffede6; display: flex; flex-direction: column; align-items: center; padding: 20px; 
+            font-family: 'Times New Roman', serif; 
+            background: #f0f2f5; 
+            display: flex; flex-direction: column; align-items: center; padding: 40px; 
         }
 
         .editor-panel { 
-            background: white; padding: 20px; border-radius: 15px; 
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 20px; 
-            border-top: 5px solid #ff4500; width: 100%; max-width: 500px; text-align: center;
+            background: white; padding: 25px; border-radius: 12px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 30px; 
+            width: 100%; max-width: 500px; text-align: center; border-top: 5px solid #ff4500;
         }
-        input, select { padding: 10px; width: 85%; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; }
-        .gen-btn { background: #ff4500; color: white; padding: 12px 25px; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; }
-        .dl-btn { background: #3b82f6; color: white; padding: 12px 25px; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; display: none; margin-top: 10px; }
-
-        /* THE CERTIFICATE */
-        #certificate { 
-            display: none; width: 900px; height: 630px; background: white; 
-            position: relative; overflow: hidden; border: 12px solid #ff4500;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2); box-sizing: border-box;
-            background-image: radial-gradient(circle at 50% 50%, #fff 0%, #fff9f5 100%);
-        }
-
-        /* FIXED LOGO IMAGE */
-        .logo-img { width: 220px; margin-top: 30px; position: relative; z-index: 10; }
-
-        /* DECORATIVE ELEMENTS (KIDS THEME) */
-        .floating-icon { position: absolute; font-size: 50px; z-index: 1; opacity: 0.8; }
-        .trophy { position: absolute; top: 40px; right: 50px; width: 110px; z-index: 5; }
-        .medal { position: absolute; bottom: 40px; left: 50px; width: 90px; z-index: 5; }
-
-        .content { position: relative; z-index: 5; text-align: center; }
+        input, select { padding: 12px; width: 90%; margin: 10px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
         
-        .main-header { color: #2c3e50; font-size: 45px; font-weight: 900; margin: 10px 0; letter-spacing: 1px; }
-        .presented-to { font-size: 18px; color: #666; margin-top: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 15px; }
+        .btn { padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
+        .btn-gen { background: #ff4500; color: white; }
+        .btn-dl { background: #3b82f6; color: white; display: none; }
+
+        /* THE PREMIUM CERTIFICATE */
+        #certificate { 
+            display: none; width: 1050px; height: 750px; background: white; 
+            position: relative; padding: 60px; box-sizing: border-box;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); /* Textured HD Paper */
+        }
+
+        /* Elaborate Border Design */
+        #certificate::before {
+            content: ""; position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px;
+            border: 10px double #ff4500; border-radius: 5px; pointer-events: none;
+        }
+        #certificate::after {
+            content: ""; position: absolute; top: 40px; left: 40px; right: 40px; bottom: 40px;
+            border: 2px solid #3b82f6; pointer-events: none;
+        }
+
+        .logo-container { text-align: center; margin-bottom: 20px; position: relative; z-index: 10; }
+        .logo-img { width: 280px; }
+
+        .header-section { text-align: center; margin-top: 10px; }
+        .cert-type { font-size: 20px; color: #666; text-transform: uppercase; letter-spacing: 6px; margin-bottom: 5px; }
+        .main-title { font-size: 65px; color: #2c3e50; font-weight: 900; margin: 0; text-transform: uppercase; }
+
+        .content-section { text-align: center; margin-top: 40px; }
+        .sub-text { font-size: 24px; color: #555; font-style: italic; }
         
         .student-name { 
-            font-size: 55px; color: #ff4500; font-weight: bold; 
-            margin: 10px 0; font-family: 'Georgia', serif;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-        
-        .course-text { font-size: 22px; color: #444; margin: 15px 0; }
-        .program-badge {
-            background: #3b82f6; color: white; display: inline-block;
-            padding: 10px 40px; border-radius: 10px; font-size: 28px;
-            font-weight: 800; margin-top: 5px; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+            font-size: 70px; color: #ff4500; font-weight: bold; 
+            margin: 20px 0; display: inline-block; padding: 0 50px;
+            font-family: 'Georgia', serif; text-decoration: underline;
         }
 
-        .footer { 
-            display: flex; justify-content: space-around; align-items: flex-end; 
-            margin-top: 40px; padding: 0 50px;
+        .details-text { font-size: 26px; color: #333; line-height: 1.6; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+
+        /* Floating Badge Design */
+        .award-badge {
+            position: absolute; top: 60px; right: 80px; width: 130px; height: 130px;
+            background: #ff4500; border: 4px solid #ffd700; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: bold; font-size: 18px; text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); transform: rotate(15deg);
         }
-        .sig-name { font-family: 'Brush Script MT', cursive; font-size: 38px; color: #2c3e50; margin-bottom: -5px; }
-        .sig-line { border-top: 2px solid #333; padding-top: 5px; font-size: 13px; font-weight: bold; width: 220px; }
+
+        /* Footer Layout - No Overwriting */
+        .footer { 
+            position: absolute; bottom: 80px; width: calc(100% - 120px);
+            display: flex; justify-content: space-around; align-items: flex-end;
+        }
+        .footer-item { text-align: center; }
+        .sig-name { font-family: 'Brush Script MT', cursive; font-size: 45px; color: #2c3e50; margin-bottom: -5px; }
+        .sig-line { border-top: 2px solid #2c3e50; padding-top: 8px; font-size: 16px; font-weight: bold; width: 250px; }
+        .date-display { font-size: 22px; font-weight: bold; color: #2c3e50; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
 
     </style>
 </head>
 <body>
 
 <div class="editor-panel">
-    <h3>Demo Certificate Tool</h3>
-    <input type="text" id="stuName" placeholder="Full Name">
-    <input type="text" id="stuGrade" placeholder="Grade">
+    <h2 style="color:#ff4500;">Premium Demo Certificate</h2>
+    <input type="text" id="stuName" placeholder="Child's Full Name">
+    <input type="text" id="stuGrade" placeholder="Child's Grade (e.g. 1)">
     <select id="stuCourse">
         <option value="" disabled selected>Select Program</option>
         <option value="English Superstar">English Superstar</option>
@@ -76,42 +96,50 @@
         <option value="Super Speaker">Super Speaker</option>
         <option value="Super Coder">Super Coder</option>
     </select>
-    <br><br>
-    <button class="gen-btn" onclick="generate()">Generate ✨</button>
-    <button id="downloadBtn" class="dl-btn" onclick="downloadCert()">Save to Gallery 📸</button>
+    <div class="btn-group">
+        <button class="btn btn-gen" onclick="generate()">Create Official Certificate</button>
+        <button id="downloadBtn" class="btn btn-dl" onclick="downloadCert()">Download HD Image 📥</button>
+    </div>
 </div>
 
 <div id="certificate">
-    <div class="floating-icon" style="top:20px; left:30px;">🚀</div>
-    <div class="floating-icon" style="bottom:120px; right:40px;">🎨</div>
-    <div class="floating-icon" style="top:250px; left:15px; font-size:30px;">⭐</div>
-    
-    <img src="https://cdn-icons-png.flaticon.com/512/3112/3112946.png" class="trophy">
-    <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" class="medal">
+    <div class="award-badge">OFFICIAL<br>GRADUATE</div>
 
-    <div class="content">
-        <img src="https://jaffarsiddig-oss.github.io/certificate-tool/image_3035f6.png" class="logo-img" alt="Vedantu Early Learning">
+    <div class="logo-container">
+        <img src="https://jaffarsiddig-oss.github.io/certificate-tool/image_2fccda.png" class="logo-img" alt="Vedantu Logo">
+    </div>
+
+    <div class="header-section">
+        <div class="cert-type">Certificate of Achievement</div>
+        <div class="main-title">CONGRATULATIONS</div>
+    </div>
+
+    <div class="content-section">
+        <div class="sub-text">This high honor is proudly presented to</div>
+        <div class="student-name" id="displayName">STUDENT NAME</div>
         
-        <div class="presented-to">Achievement Award</div>
-        <div class="main-header">CONGRATULATIONS</div>
-
-        <div class="presented-to">Proudly Presented To</div>
-        <div class="student-name" id="displayName">NAME</div>
-
-        <div class="course-text">
-            of <b>Grade <span id="displayGrade">X</span></b> for brilliant participation in
+        <div class="details-text">
+            of <span class="highlight">Grade <span id="displayGrade">X</span></span> for demonstrating exceptional skills <br>
+            and successfully completing the official demo of
             <br>
-            <div class="program-badge" id="displayCourse">PROGRAM</div>
+            <span class="highlight" style="font-size: 38px; color: #ff4500;" id="displayCourse">PROGRAM NAME</span>
         </div>
+        
+        <p style="margin-top: 30px; font-size: 18px; color: #777; font-style: italic;">
+            "Every child is a genius in their own way. Keep shining!"
+        </p>
+    </div>
 
-        <div class="footer">
-            <div>
-                <div style="font-size: 18px; font-weight: bold;" id="displayDate">Date</div>
-                <div class="sig-line">DATE</div>
-            </div>
-            <div>
-                <div class="sig-name">Vamsi Krishna</div>
-                <div class="sig-line">Vamsi Krishna<br>CEO, Vedantu</div>
+    <div class="footer">
+        <div class="footer-item">
+            <div class="date-display" id="displayDate">March 17, 2026</div>
+            <div class="sig-line">DATE OF COMPLETION</div>
+        </div>
+        <div class="footer-item">
+            <div class="sig-name">Vamsi Krishna</div>
+            <div class="sig-line">
+                Vamsi Krishna<br>
+                CEO & Co-Founder, Vedantu
             </div>
         </div>
     </div>
@@ -127,19 +155,25 @@
             document.getElementById('displayName').innerText = name.toUpperCase();
             document.getElementById('displayGrade').innerText = grade;
             document.getElementById('displayCourse').innerText = course;
-            document.getElementById('displayDate').innerText = new Date().toLocaleDateString();
+            
+            const today = new Date().toLocaleDateString('en-GB', {
+                day: 'numeric', month: 'long', year: 'numeric'
+            });
+            document.getElementById('displayDate').innerText = today;
 
             document.getElementById('certificate').style.display = 'block';
             document.getElementById('downloadBtn').style.display = 'block';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        } else {
+            alert("Please provide all the details to generate the official certificate.");
         }
     }
 
     function downloadCert() {
         const cert = document.getElementById('certificate');
-        html2canvas(cert, { useCORS: true, scale: 2 }).then(canvas => {
+        html2canvas(cert, { useCORS: true, scale: 3 }).then(canvas => {
             const link = document.createElement('a');
-            link.download = 'Vedantu_Certificate.png';
+            link.download = 'Official_Vedantu_Certificate.png';
             link.href = canvas.toDataURL();
             link.click();
         });
